@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import TemplateView, CreateView, DetailView, ListView, UpdateView, DeleteView
 from .models import Empleado
 
@@ -7,14 +7,14 @@ from .models import Empleado
 class EmpleadoCreateView(CreateView):
 
     model = Empleado
-    # template_name_suffix = '_add_form'
     fields = ['nombre', 'apellidos','fecha_nacimiento', 'email','salario']
+    #reverse('empleado-detail', kwargs={'pk': self.pk})
 
 
 class EmpleadoDetailView(DetailView):
 
     model = Empleado
-    #template_name = 'empleado/empleado_detail.html'
+    context_object_name = 'empleado'
 
 
 class EmpleadoListView(ListView):
@@ -31,5 +31,5 @@ class EmpleadoUpdateView(UpdateView):
 class EmpleadoDelete(DeleteView):
     
     model = Empleado
-    success_url = reverse_lazy('empleado_list')
+    success_url = reverse_lazy('empleado-list')
 
