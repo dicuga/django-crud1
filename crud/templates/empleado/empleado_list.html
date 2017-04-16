@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<ul>
+{% for empleado in empleado_list %}
+    <li>{{ empleado.nombre }} {{ empleado.apellidos }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
